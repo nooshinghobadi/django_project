@@ -2,15 +2,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=divice-width,initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+    <style>
+        .text-box {
+            border: 2px solid #3c3f3f;
+            border-radius: 8px;
+            padding: 16px;
+            background-color: #c4c7c8;
+            position: fixed;
+            bottom: 600px;
+            right: 10px;
+        }
+    </style>
     <link href="{% static "css/blog.css" %}" rel="stylesheet">
 </head>
 <body>
-    <div id="content">
+    <div class="content">
         {% block content %}
         {% endblock %}
     </div>
-    <div id="sidebar">
+    <div class="text-box">
         <h2>My Blog</h2>
         <P>this is my blog.</P>
     </div>
