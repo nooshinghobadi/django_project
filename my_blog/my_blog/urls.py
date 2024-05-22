@@ -21,6 +21,7 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/',include('firstblog.urls',namespace='blog')),
+    path('account/', include('account.urls')),
 ]
 
 #urlpatterns+=staticfiles_urlpatterns()
