@@ -60,6 +60,16 @@
             <div class="col-md-8">
                 <div class="card mb-4">
                     <img src="/media/blog.jpg" class="card-img-top" alt="...">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li class="{{ messages.tags }}">
+                                    {{ message|safe }}
+                                    <a href="#" class="close">x</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     <div class="card-body">
                         {% block content %}
                         {% endblock %}  
