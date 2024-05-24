@@ -94,3 +94,7 @@ def post_comment(request, post_id):
                   {'post':post,
                   'form':form,
                   'comment':comment})
+
+
+def home(request):
+    return render(request,'home/home.html')

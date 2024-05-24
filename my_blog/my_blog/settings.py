@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_i4$++la1in_f4*ng97-%7rf+%0_)t=bm-u-2m2h799ozg3a*5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['805f-93-126-40-67.ngrok-free.app','127.0.0.1']
 
 
 # Application definition
@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'firstblog',
     'taggit',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -121,9 +123,13 @@ USE_TZ = True
 STATIC_URL = 'static/'
 #man ezafeh kardam va khata dad:
 #STATICFILES_DIRS = [BASE_DIR / "static"]
-#STATIC_ROOT = BASE_DIR / "assets"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 #print([os.path.join(BASE_DIR, "static")])
-
+#STORAGE={
+    #'staticfiles':{
+        #'BACKEND':'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    #},
+#}
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -136,9 +142,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 
-LOGIN_REDIRECT_URL = 'dashboard'
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'account:dashboard'
+LOGIN_URL = 'account:login'
+LOGOUT_URL = 'account:logout'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'

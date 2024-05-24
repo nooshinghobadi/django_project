@@ -3,15 +3,13 @@
 {% block title %}my blog{% endblock %}
 
 {% block content %}
-  <h1>my blog</h1>
   {% if tag %}
     <h2>Posts tagged with "{{ tag.name }}"</h2>
   {% endif %}
   {% for post in posts %}
+    <h5 class="card-title">{{ post.title }}</h5>
     <h2>
-        <a href="{{ post.get_absolute_url }}">
-            {{ post.title }}
-        </a>
+        <a href="{{ post.get_absolute_url }}"class="btn btn-primary">Read More</a>
     </h2>
     <p class="tags">
       Tags:

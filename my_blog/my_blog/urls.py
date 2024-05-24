@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from firstblog.views import home
 #from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/',include('firstblog.urls',namespace='blog')),
-    path('account/', include('account.urls')),
+    path('account/', include('account.urls',namespace='account')),
+    path('', home),
 ]
 
 if settings.DEBUG:
