@@ -11,10 +11,10 @@
         .text-box {
             border: 2px solid #3c3f3f;
             border-radius: 8px;
-            padding: 16px;
+            padding: 30px;
             background-color: #c4c7c8;
             position: fixed;
-            bottom: 600px;
+            bottom: 60px;
             right: 10px;
         }
     </style>
@@ -30,6 +30,11 @@
         <P>this is my blog.
            I've written {% total_posts %} posts so far.
         </P>
+        <p>
+            <a href="{% url "firstblog:post_feed" %}">
+                Subscribe to my RSS feed
+            </a>
+        </p>
         <h3>Lastest posts</h3>
         {% show_lastest_posts 3 %}
         <h3>Most commented posts</h3>
