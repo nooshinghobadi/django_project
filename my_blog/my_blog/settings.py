@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['805f-93-126-40-67.ngrok-free.app','127.0.0.1']
 
 
-# Application definition
+SITE_ID = 1
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'firstblog',
     'taggit',
     'bootstrap5',
+    'django.contrib.sites',
+    'django.contrib.sitemaps'
 ]
 
 MIDDLEWARE = [
