@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'taggit',
     'bootstrap5',
     'django.contrib.sites',
-    'django.contrib.sitemaps'
+    'django.contrib.sitemaps',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,10 @@ WSGI_APPLICATION = 'my_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'noosh',
+        'USER': 'noosh',
+        'PASSWORD': '12345678'
     }
 }
 
