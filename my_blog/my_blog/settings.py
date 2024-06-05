@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-_i4$++la1in_f4*ng97-%7rf+%0_)t=bm-u-2m2h799ozg3a*5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['805f-93-126-40-67.ngrok-free.app','127.0.0.1']
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'myblog.com']
 
 SITE_ID = 1
 
@@ -44,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
+    'images.apps.ImagesConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
