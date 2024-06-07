@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'images.apps.ImagesConfig',
     'django_extensions',
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'shop',
+    'cart',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -160,3 +164,5 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend' ,
     'account.authentication.EmailAuthBackend' ,
 ]
+
+CART_SESSION_ID = 'cart'
