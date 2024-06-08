@@ -1,9 +1,13 @@
 from decimal import Decimal
 from django.conf import settings
 from shop.models import Product
-
+from django.contrib.auth.models import User
+from django.db import models
 
 class Cart:
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     def __init__(self, request):
         
         self.session = request.session

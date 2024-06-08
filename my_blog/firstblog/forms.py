@@ -13,6 +13,14 @@ class CommentForm(forms.ModelForm):
         model=Comment
         fields=['name','email','body']
 
+    #def __init__(self, *args, **kwargs):
+        #super(CommentForm, self).__init__(*args, **kwargs)
+        
+        # Make first name, last name, and email fields read-only
+        #self.fields['name'].widget.attrs['readonly'] = True
+        #self.fields['last_name'].widget.attrs['readonly'] = True
+        #self.fields['email'].widget.attrs['readonly'] = True
+
 class SearchForm(forms.Form):
     query = forms.CharField()
     

@@ -10,6 +10,7 @@ from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
 from taggit.models import Tag
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 
 
 def post_list(request, tag_slug=None):
@@ -68,6 +69,7 @@ def post_detail(request, year, month, day, post):
                    'form':form,
                    'similar_posts':similar_posts})
 
+@login_required
 def post_share(request, post_id):
     post=get_object_or_404(Post, id=post_id, status=Post.Status.published)
     sent = False
@@ -90,20 +92,31 @@ def post_share(request, post_id):
     return render(request, 'firstblog/post/share.html',
                             {'post':post,'form':form,'sent': sent})
 
-@require_POST
+@login_required
 def post_comment(request, post_id):
     post=get_object_or_404(Post, id=post_id, status=Post.Status.published)
     comment=None
-    form=CommentForm(data=request.POST)
-    if form.is_valid():
-        comment=form.save(commit=False)
-        comment.post=post
-        comment.save()
+    if request.method == 'POST': 
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            comment=form.save(commit=False)
+            comment.post=post
+            comment.save()
+    #age request get bashe va fard id post ra bedanad ejra mishe
+    else:
+        if request.user.is_authenticated:
+            initial_data = {
+                'name': request.user.first_name,
+                #'last_name': request.user.last_name,
+                'email': request.user.email,
+            }
+            form = CommentForm(initial=initial_data)
+        else:
+            pass
     return render(request, 'firstblog/post/comment.html',
                   {'post':post,
                   'form':form,
                   'comment':comment})
-
 
 def home(request):
     return render(request,'home/home.html')
